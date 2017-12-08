@@ -1,0 +1,72 @@
+
+      <div class="set-meeting js-set-meeting hidn">
+        <div class="js-dates">
+          <p><b>Календарь</b></p>
+          <div class="abstr">
+            <div class="duration"><i style="color:#27c526;" class="fa fa-circle" aria-hidden="true"></i>&nbsp; Презентация 90 мин.</div>
+            <div class="time-zone">Время GMT+2, Киев</div>
+          </div>
+
+          <div class="dates">
+            <div class="head">Выберите день</div>
+            <div class="list">
+              {data_list}
+            </div>
+          </div>
+          <div class="clr"></div>
+        </div>
+
+          <div class="times js-times">
+            {day_times}
+          </div>
+
+          <div class="final js-set-meeting-final hidn">
+            <div class="who">
+              <div class="avatar"><img src="i/~ava2.jpg"></div>
+              <div class="name">Ирина Матвийчук</div>
+            </div>
+            <div class="info">
+              <div class="duration"><i style="color:#27c526;" class="fa fa-circle" aria-hidden="true"></i>&nbsp; Встреча 90 минут</div>
+              <div class="when">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <span class="js-when-time">12:00</span> &nbsp; &nbsp; 
+                <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span class="js-when-date">среда, 9 августа 2017</span>
+              </div>
+              <div class="time-zone"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp; по Киевскому времени</div>
+              <div>&nbsp;</div>
+              <p><a href="javascript:;" class="loc-al js-back-all">Выбрать другую дату</a></p>
+            </div>
+            <form class="where form" data-send="" id="setMeetingForm" name="setMeetingForm" data-goto="" enctype="multipart/form-data" action="" method="post">
+              <input type="hidden" name="id_meeting_day" value="0">
+              <input type="hidden" name="id_consultant" value="1">
+              <input type="hidden" name="day" value="">
+              <input type="hidden" name="time" value="">
+              <input type="hidden" name="time_field" value="">
+              <div class="head">Выберите место:</div>
+              <div class="field "> 
+                <select name="meet-place" class="ref js-req js-ref-meet-place" data-err="Укажите место проведения консультации">
+                <option value="">--- Выбрать ---</option>
+                <option value="office">{office}</option>
+                <option value="my">Укажите удобное Вам место…</option>
+                <option value="skype">Skype</option>
+                </select>
+              </div>
+              <div class="field js-area-meet-place">
+                <div class="data"><input type="text" class="str js-req" data-err="Укажите адрес" name="addr" value="" placeholder="Укажите удобное вам место (адрес)"></div>
+                <div class="hint">Для подтверждения встречи укажите Ваш логин в скайпе</div>
+              </div>
+              <div class="field ">
+                <div class="data"><input type="text" class="str js-req" data-err="Укажите скайп" name="skype" value="" placeholder="Ваш скайпе"></div>
+                <div class="hint">Для установления контакта</div>
+              </div>
+              <div class="ctrl l">
+                <span class="js-load-layer"><img src="i/4loading.gif"></span>
+                <span class="js-form-send-layer"><a class="btn-apply js-form-submit" href="javascript:;">Назначить</a></span>
+                <span class="js-form-sent"></span>
+                <div>&nbsp;</div>
+                <div class="js-set-meeting-result hot"></div>
+               </div>
+             </form>
+            <div class="clr"></div>
+          </div><!--/.final-->
+
+      </div>

@@ -1,0 +1,108 @@
+{
+  "_comment_": "Для собственников бизнеса / Может предоставить доступ (нескольких отчетов) 3-му лицу из числа приглашенных и оплаченых сотрудников которіе прошли тест",
+  "current_stage": "0_payment",
+  "road_map": [
+    "0_payment",
+    "1_pass_test",
+    "2_set_meeting",
+    "3_get_test_results"
+  ],
+  "stages": {
+    "0_payment": {
+      "_comment_": "Первый вход, после регистрации",
+      "condition_complete": {
+        "_comment_": "Набор флагов условий которые дожны быть все выполнены (==true) для перехода к след.шагу. может быть (минимум) один флаг is_complete а могут быть несколько is_...",
+        "is_complete": false
+      },
+      "_comment__handler": "Имя функции обработчика данного щага: IDentity.php>>TIDentity::{handler}",
+      "handler": "UserFirstAccess",
+      
+      "_comment__pay_campaign": "Указывает на универсальную метку платежа. Пример ссылки для оплаты: http://epay.pdev.co.ua/form/id_persnl_and_test",
+      "pay_campaign": "id_persnl_and_test"
+    },
+    
+    "1_pass_test": {
+      "_comment_": "Первый вход, после регистрации",
+      "condition_complete": {
+        "is_test_complete": false
+      },
+      "handler": "UserFirstTest",
+      "test": "Leader-IDentity _идентификатор теста к прохождению",
+      "uniq_sess": "_уникальная метка сессии для прохождения теста и зачета результатов_"
+    },
+    
+    "2_set_meeting": {
+      "do": "set_meeting",
+      "is_complete": false,
+      "navigation": {
+        "pg_home": "Главная",
+        "pg_articles": "Статьи",
+        "pg_books": "Книги"
+      }
+    },
+    "3_get_test_results": {
+      "do": "",
+      "is_complete": false,
+      "navigation": {
+        "pg_home": "Главная",
+        "pg_employees": "Сотрудники",
+        "pg_articles": "Статьи",
+        "pg_books": "Книги",
+        "pg_tasks": "Задания",
+        "pg_my_notes": "Мои заметки",
+        "pg_team": "Команда"
+      },
+      "var": {
+        "invite_employees_qty": 5,
+        "employees": [
+          {
+            "full_name": "Иван Васильевич",
+            "job_pos": "РОПа",
+            "E-mail": "email@canada.com",
+            "status": "Отправлено приглашение 09.08.2017",
+            "user_id": 0,
+            "is_test_passed": false,
+            "is_report": false,
+            "is_report_provided": false,
+            "_comment__is_test_passed": "user_id - DB::user_profile.user_id, прописывается после регистрации сотрудника",
+            "_comment__is_report": "is_report==true: отчет готов к просмотру. вместо статуса выводится ссылка: _Посмотреть отчет_ и кнопка [открыть доступ] - сотруднику",
+            "_comment__is_report_provided": "is_report_provided==true: доступ к просмотру отчета открыт сотруднику. В статусе дописывается доступ открыт. Забрать доступ НЕЛЬЗЯ"
+          },
+          {
+            "full_name": "Джон Сноу",
+            "job_pos": "Король севера",
+            "E-mail": "john.snow@gameofthrones.movie",
+            "status": "10.08.2017 тест пройден, ожидается отчет",
+            "user_id": 4322523,
+            "is_test_passed": true,
+            "is_report": false,
+            "is_report_provided": false
+          }
+        ]
+      },
+      "messages": [
+        {
+          "pg": "*",
+          "type": "info",
+          "text": "Вы можете пригласить сотрудников пройти тестирование в меню слева – <b>Сотрудники</b> <br>Результаты хи тестирования, будут доступны Вам том же разделе.",
+          "is_closed": false
+        },
+        {
+          "pg": "pg_home",
+          "type": "ok",
+          "text": "С результатами теста Вы можете ознакомиться ниже. <i class='fa fa-long-arrow-down' aria-hidden='true'></i>",
+          "is_closed": false
+        },
+        {
+          "pg": "pg_employees",
+          "type": "info",
+          "text": "В данном разделе вы можете пригласить своих сотрудников для прохождения ими теста и получение отчетов (заключений) после прохождения ими теста. - тавтология....",
+          "is_closed": false
+        }
+      ]
+    }
+  },
+  "custom": {
+    "_comment_": "Пользовательские данные. Например определенные отметки для backend/frontend"
+  }
+}

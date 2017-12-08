@@ -1,0 +1,139 @@
+<?php
+
+ /**
+  * Список фотографий учасников конкурса - просмотр
+  * 
+  * @return string Возвращает HTML-код
+  */
+ function PhotoContestView($isViewOnly = true)
+ {
+  global $CMS;
+
+//  if ($_SERVER['REMOTE_ADDR'] == '95.158.59.135' ||
+//      $_SERVER['REMOTE_ADDR'] == '46.200.128.18'
+//     ) { ; } else { return ''; }
+
+  /*
+  if ($_GET['sm2'] == 'vote')
+    {
+     return $this->PgPhotoEventVote();
+    }
+  */  
+ 
+  $Data = $CMS->DB->Exec2Arr('
+  SELECT 
+   eq_photo_reg.* 
+  ,(SELECT AVG(score) FROM eq_photo_reg_vote WHERE id_photo_reg = eq_photo_reg.id) as `score`
+  FROM eq_photo_reg 
+  WHERE eq_photo_reg.ts_del=0
+  -- ORDER BY eq_photo_reg.photo_name
+  ORDER BY score DESC
+  LIMIT 0,20
+  ');
+
+
+  $Tmpl = '
+  <div class="item">
+    <div class="pic"><a href="{photo}" class="js-zoom-img" data-w="{w}" data-h="{h}" title="{abstr}"><img src="{photo_small}"></a></div>
+    <div class="head"><a href="{photo}">{photo_name}</a></div>
+    <div class="who">{name_f_l}, {age} років</div>
+    <div class="abstr"><div class="gradFlu"></div>{notes}</div>
+  </div>
+  ';
+
+  /*$S .= '
+  <br>
+  <h3 class="c">Лідери голосування</h3>
+  <table class="tView"><thead><tr>
+  <th>Дата подачи</th>
+  <th>Фамилия Имя<br>Возраст</th>
+  <th>Середній бал</th>
+  <th>E-mail <br>Тел.</th>
+  <th>Фото</th>
+  <th>Название фото <br> Примечания</th>
+  </tr></thead><tbody>';*/
+  //$isOdd = true;
+
+  $S .= '
+  <br>
+  <h3 class="c">Наші конкурсанти</h3>
+  <div class="photoContestList">
+  ';
+
+  //ini_set("max_execution_time", "600");
+
+  $i = 0;
+  foreach ($Data as $Item)
+    {
+     /*if ($Item['score'] <= 0) { break; }
+     $Item['ts_ins'] = date('H:i d.m.Y', $Item['ts_ins']);
+  
+     $Item['name_f_l'] = trim($Item['name_f_l']);
+     $Item['name_f_l'] = mb_convert_case($Item['name_f_l'], MB_CASE_TITLE, 'UTF-8');
+     
+     if ($i < 10) { $Item['photo'] = '<a href="../../data/photo_contest/'.$Item['id'].'.jpg" target="_blank"><img src="../../data/photo_contest/'.$Item['id'].'.jpg" style="max-width:160px; max-heigth:120px"></a>'; }
+     else { $Item['photo'] = '<a href="../../data/photo_contest/'.$Item['id'].'.jpg" target="_blank" class="no"><i class="icon-camera icon-large" style="opacity:0.5"></i></a>'; }
+
+     $S .= "<tr class='$Odd'>
+     <td class='r'> $Item[ts_ins] </td>
+     <td> $Item[name_f_l] <br> $Item[age] лет </td>
+     <td class='r' style='font-size:22px;'> ".sprintf('%.02f', $Item['score'])." </td>
+     <td> $Item[email] <br> $Item[tel] </td>
+     <td class='c'> $Item[photo] </td>
+     <td> <b><big>$Item[photo_name]</big></b> <br>$Item[notes] </td>
+     </tr>";*/
+
+     //if ($isOdd) { $isOdd = false; $Odd = ''; } else { $isOdd = true; $Odd = 'odd'; }
+
+     $Item['name_f_l']   = mb_convert_case(trim($Item['name_f_l']),   MB_CASE_TITLE, 'UTF-8');
+     $Item['photo_name'] = mb_convert_case(trim($Item['photo_name']), MB_CASE_TITLE, 'UTF-8');
+     $Item['notes']      = mb_convert_case(trim($Item['notes']),      MB_CASE_TITLE, 'UTF-8');
+     
+     $Item['photo'] = 'data/photo_contest/1200p/'.$Item['id'].'.jpg';
+     $Item['photo_small'] = 'data/photo_contest/240p/'.$Item['id'].'.jpg';
+     
+     $Item['i'] = $i;
+     
+     $Item['abstr'] = '<b>'.$Item['photo_name'].'</b><br>'.$Item['notes'].'<br><div class=r><b>'.$Item['name_f_l'].'</b>, '.$Item['age'].' лет</div>';
+     $Item['abstr'] = str_replace('"', '`', $Item['abstr']);
+
+     if (file_exists($Item['photo_small']))
+       {
+        //fastResize($Item['photo'], $Item['photo_small'], 320, 210);
+        $Attr = getimagesize($Item['photo']);
+        $Item['w'] = $Attr[0];
+        $Item['h'] = $Attr[1];
+       }
+
+     $S .= $CMS->Gen($Tmpl, $Item);
+
+     $i ++;
+    }
+  $S .= '</div><div class="clr"></div><br><br>';  
+
+  //$S .= TRC($Data2);
+  return '<div class="blockArea blockShadow" style="border-top: 1px solid #aaa;"><div class="container_12">'.$S.'</div></div>'.$CMS->GetBlock('PhotoSwipe');
+ }
+
+
+ function fastResize($From, $To, $NewW, $NewH)
+ {
+  $fn = $From;
+  $size = getimagesize($fn);
+  $ratio = $size[0]/$size[1]; // width/height
+  if( $ratio > 1) {
+      $width = $NewW;
+      $height = $NewH/$ratio;
+  }
+  else {
+      $width = $NewW*$ratio;
+      $height = $NewH;
+  }
+  $src = imagecreatefromstring(file_get_contents($fn));
+  $dst = imagecreatetruecolor($width,$height);
+  imagecopyresampled($dst,$src,0,0,0,0,$width,$height,$size[0],$size[1]);
+  imagedestroy($src);
+  imagepng($dst,$To); // adjust format as needed
+  imagedestroy($dst);
+ }
+

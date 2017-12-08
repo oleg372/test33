@@ -1,0 +1,31 @@
+<h1>{User->first_name} {User->last_name}, добро пожаловать!</h1>
+<p>Вы новый пользователь. Для начала работы необходимо пройти онлайн тест <b>Leader IDentity</b>
+  <br>&ndash; это инструмент выявления Ваших сильных сторон и достижения командных результатов в бизнесе.</p>
+
+<p>Прохождение теста, анализ результатов и индивидуальная презентация отчета предоставляются на платной основе.
+<!--<br>Стоимость: <span class="hot b">{ -a m o u t} грн</span>--></p>
+<p><a class="btn-apply" href="{pay_link}">Оплатить онлайн</a></p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--<p><a class="js-btn local">У меня есть промо-код</a></p>-->
+<div class="js-open-1 hidn">
+  <p>
+    Если у вас есть код от нашего партнёра или код подарочного сертификата, воспользуйтесь им.
+    <!--Если у вас есть промо-код от нашего партнёра, воспользуйтесь им.-->
+  </p>
+  <form class="form w200" data-send="aj-catalog&amp;act=reviews&amp;cmd=addReview" id="promocodeForm" name="promocodeForm" data-goto="" enctype="multipart/form-data" action="" method="post">
+  <div class="field">
+    <div class="label">Укажите Ваш промо-код</div>
+    <div class="data"><input type="text" class="str js-req" data-err="Введите Ваш промо-код" name="promo_code" value="" placeholder="Промо-код"></div>
+  </div>
+  <div class="ctrl l">
+    <span class="js-load-layer"><img src="i/4loading.gif"></span>
+    <span class="js-form-send-layer"><a class="btn js-form-submit" href="javascript:;">Отправить</a></span>
+    <span class="js-form-sent"></span>
+  </div>
+  </form>
+
+  <div class="js-promo-code-result b hot"></div>
+</div>

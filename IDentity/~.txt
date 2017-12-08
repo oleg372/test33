@@ -1,0 +1,43 @@
+Array
+(
+    [t09_30] => Array
+        (
+            [] => 
+        )
+
+    [t11_30] => Array
+        (
+            [] => 
+        )
+
+    [t13_30] => Array
+        (
+            [who] => Oleg Potapov
+            [place] => office:
+            [skype] => dreadnaut-
+            [user_id] => 69
+            [stage] => 2_set_meeting
+            [] => 
+        )
+
+    [t15_30] => Array
+        (
+            [who] => Oleg Potapov
+            [place] => skype:
+            [skype] => dreadnaut-
+            [user_id] => 69
+            [stage] => 2_set_meeting
+            [] => 
+        )
+
+    [t18_30] => Array
+        (
+            [who] => Oleg Potapov
+            [place] => my:мое место
+            [skype] => dreadnaut-
+            [user_id] => 69
+            [stage] => 2_set_meeting
+            [] => 
+        )
+
+)

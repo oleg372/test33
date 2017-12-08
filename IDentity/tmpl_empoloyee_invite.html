@@ -1,0 +1,52 @@
+
+      <p class="js-invite-pre">
+        <a class="btn-apply js-form-submit js-open" data-open=".js-invite" data-hide=".js-invite-pre" href="javascript:;">Пригласить сотрудника</a>
+      </p>
+
+      <div class="js-invite" style="display:none">
+        <form class="form w600" data-send="aj-catalog&amp;act=reviews&amp;cmd=addReview" id="inviteForm" name="inviteForm" data-goto="" enctype="multipart/form-data" action="" method="post">
+        <div class="head">Пригласить сотрудника</div>
+        <div class="sub-head">Вы можете пригласить 
+<b>5 сотрудников</b>
+<!--
+<b>7 сотрудников</b>
+<b>6 сотрудников</b>
+<b>5 сотрудников</b>
+<b>4 сотрудников</b>
+<b>3 сотрудников</b>
+<b>2 сотрудников</b>
+<b>1 сотрудника</b>
+-->
+        </div>
+        <input type="hidden" name="token" value="">
+        <input type="hidden" name="token_data" value="">
+
+        <div><div style="width:46%;display:inline-block;margin-right:8%;">
+
+        <div class="field">
+          <div class="label">Фамилия сотрудника</div>
+          <div class="data"><input type="text" class="str js-req" data-err="Введите имя сотрудника" name="first_name" value="" placeholder="Имя"></div>
+        </div>
+
+        </div><div style="width:46%;display:inline-block">
+
+        <div class="field">
+          <div class="label">Имя сотрудника</div>
+          <div class="data"><input type="text" class="str js-req" data-err="Введите фамилию сотрудника" name="last_name" value="" placeholder="Фамилия"></div>
+        </div>
+
+        </div></div>
+
+        <div class="field">
+          <div class="label">E-mail сотрудника (для отправки приглашения)</div>
+          <div class="data"><input type="email" class="str js-req" data-err="Введите корректно e-mail сотрудника" name="email" value="" placeholder="E-mail"></div>
+        </div>
+
+        <div class="ctrl">
+          <span class="js-load-layer"><img src="i/0loading.gif"></span>
+          <span class="js-form-send-layer"><a class="btn-apply js-form-submit" href="javascript:;">Отправить</a></span>
+          <span class="js-form-sent"> Приглашение отправлено </span>
+        </div>
+        </form>
+
+      </div><!--/.js-invite-->

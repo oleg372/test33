@@ -1,0 +1,123 @@
+{invite_form}
+
+{view_employees_msg}
+
+<table class="table-default full-w">
+<thead>
+  <tr>
+  <td class="minw"> </td>
+  <td> Сотрудник </td>
+  <td> Открыт доступ </td>
+  </tr>
+</thead>
+
+<tfoot>
+  <tr>
+  <td> </td>
+  <td colspan="2"> Всего: {_qty} </td>
+  </tr>
+</tfoot>
+
+<tbody>
+{items}
+<!--
+  <tr>
+  <td class="minw"> <input type="checkbox" name="a" value="{id_employee}"> </td>
+  <td> <a href="javascript:;" class="js-btn-employee-report" data-id-report="{id_employee}">{last_name} {first_name}</a> </td>
+  <td> 
+    <a href="javascript:;" title="Закрыть доступ" class="local js-btn-employee-report-unshare"><i class="fa fa-times hot" aria-hidden="true"></i> Фамилия Имя</a>; &nbsp; &nbsp;
+    <a href="javascript:;" title="Закрыть доступ" class="local js-btn-employee-report-unshare"><i class="fa fa-times hot" aria-hidden="true"></i> Фамилия Имя</a>; &nbsp; &nbsp;
+    <a href="javascript:;" title="Закрыть доступ" class="local js-btn-employee-report-unshare"><i class="fa fa-times hot" aria-hidden="true"></i> Фамилия Имя</a>; &nbsp; &nbsp;
+  </td>
+  </tr>
+  <tr>
+  <td class="minw"> <input type="checkbox" name="a" value="{id_employee}"> </td>
+  <td> <a href="javascript:;" class="js-btn-employee-report" data-id-report="{id_employee}">{last_name} {first_name}</a> </td>
+  <td> 
+    &mdash;
+  </td>
+  </tr>
+  <tr>
+  <td class="minw"> <input type="checkbox" name="a" value="{id_employee}"> </td>
+  <td> <a href="javascript:;" class="js-btn-employee-report" data-id-report="{id_employee}">{last_name} {first_name}</a> </td>
+  <td> 
+    <a href="javascript:;" class="local js-btn-employee-report-unshare"><i class="fa fa-times hot" aria-hidden="true"></i> Фамилия Имя</a>; &nbsp; &nbsp;
+  </td>
+  </tr>
+-->
+</tbody>
+</table>
+
+<!--
+<p><b><a class="local" href="javascript:;">Открыть доступ</a></b> к выбранным отчетам</a>
+</p>
+-->
+<!--<p><a class="js-btn local">У меня ***</a></p>-->
+
+{share_form}
+
+<!--
+<div class="-js-open-1">
+  <p>
+    Действия с отмеченными: Предоставить доступ к отчетам, другим пользователям (например Вашим сотрудникам)
+  </p>
+
+  <form class="form w500" data-send="" id="shareReportForm" name="share-report" data-goto="" enctype="multipart/form-data" action="" method="post">
+  <div class="field">
+    <div class="label">E-mail пользователя</div>
+    <div class="data"><input type="text" class="str js-req" data-err="Введите e-mail" name="email" value="" placeholder="mail@example.com"></div>
+    <div class="hint">Указываемый пользователь, должен быть зарегистрирован в IDentity</div>
+  </div>
+  <div class="ctrl l">
+    <span class="js-load-layer"><img src="i/4loading.gif"></span>
+    <span class="js-form-send-layer"><a class="btn js-form-submit" href="javascript:;">Открыть доступ</a></span>
+    <span class="js-form-sent"></span>
+  </div>
+  </form>
+
+  <div class="js-share-result"></div>
+</div>
+-->
+
+<!--
+      <p class="js-invite-pre">
+        <a class="btn-apply js-form-submit" href="javascript:;">Пригласить сотрудника</a>
+      </p>
+
+      <div class="js-invite">
+        <form class="form w600" data-send="aj-catalog&amp;act=reviews&amp;cmd=addReview" id="inviteForm" name="inviteForm" data-goto="" enctype="multipart/form-data" action="" method="post">
+        <div class="head">Пригласить сотрудника</div>
+        <div class="sub-head">Вы можете пригласить <b>5 сотрудников</b> -- <span class="hot">как будем ограничивать количество приглашенных сотрудников?</span></div>
+        <input type="hidden" name="token" value="">
+        <input type="hidden" name="token_data" value="">
+
+        <div><div style="width:46%;display:inline-block;margin-right:8%;">
+
+        <div class="field">
+          <div class="label">Фамилия сотрудника</div>
+          <div class="data"><input type="text" class="str js-req" data-err="Введите имя сотрудника" name="first_name" value="" placeholder="Имя"></div>
+        </div>
+
+        </div><div style="width:46%;display:inline-block">
+
+        <div class="field">
+          <div class="label">Имя сотрудника</div>
+          <div class="data"><input type="text" class="str js-req" data-err="Введите фамилию сотрудника" name="last_name" value="" placeholder="Фамилия"></div>
+        </div>
+
+        </div></div>
+
+        <div class="field">
+          <div class="label">E-mail сотрудника (для отправки приглашения)</div>
+          <div class="data"><input type="email" class="str js-req" data-err="Введите корректно e-mail сотрудника" name="email" value="" placeholder="E-mail"></div>
+        </div>
+
+        <div class="ctrl">
+          <span class="js-load-layer"><img src="i/0loading.gif"></span>
+          <span class="js-form-send-layer"><a class="btn-apply js-form-submit" href="javascript:;">Отправить</a></span>
+          <span class="js-form-sent"> Приглашение отправлено </span>
+        </div>
+        </form>
+
+      </div>< !--/.js-invite-- >
+-->
