@@ -2,4 +2,4 @@
 
 //phpinfo();
 
-echo '<pre>'. phpversion() .'</pre>';
+echo 'Here PHP ver. is '. phpversion();
